@@ -11,9 +11,7 @@ myLibrary.push(
       false
    )
 );
-myLibrary.push(
-   new Book("The 48 Laws of Power", "Robert Greene", 452, false)
-);
+myLibrary.push(new Book("The 48 Laws of Power", "Robert Greene", 452, false));
 
 function Book(title, author, pages, read) {
    this.title = title;
@@ -47,15 +45,19 @@ function displayBooks() {
 
       const bookAuthor = document.createElement("p");
       bookAuthor.classList.add("book-author");
-      bookAuthor.textContent = book.author;
+      bookAuthor.textContent = `By ${book.author}`;
 
       const bookPageCount = document.createElement("p");
       bookPageCount.classList.add("book-page-count");
-      bookPageCount.textContent = book.pages;
+      bookPageCount.textContent = `Pages: ${book.pages}`;
 
       const bookReadStatus = document.createElement("p");
       bookReadStatus.classList.add("book-read-status");
-      bookReadStatus.textContent = book.read;
+      if (book.read) {
+        bookReadStatus.textContent = "Read"
+      } else {
+        bookReadStatus.textContent = "Not Read"
+      }
 
       bookInfo.appendChild(bookTitle);
       bookInfo.appendChild(bookAuthor);
