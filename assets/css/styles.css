@@ -1,14 +1,31 @@
 * {
-    box-sizing: border-box;
+   box-sizing: border-box;
+}
+
+body {
+   font-family: "Roboto", sans-serif;
+   background-color: #8D99AE;
 }
 
 /* Header Styling */
 
 header {
-    height: 10rem;
-    background-color: #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
+   height: 10rem;
+   background-color: #2B2D42;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 3rem;
+   font-weight: 700;
 }
+
+
+/* Main styling */
+
+main {
+    background-color: #EDF2F4;
+    width: 70%;
+    margin: 3rem auto;
+}
+
+
