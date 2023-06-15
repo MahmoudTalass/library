@@ -29,6 +29,7 @@ function addBookToLibrary() {
    const read = prompt("Have you read the book before? (yes/no)");
 
    myLibrary.push(new Book(title, author, pages, read));
+   displayBooks();
 }
 
 function displayBooks() {
@@ -54,9 +55,9 @@ function displayBooks() {
       const bookReadStatus = document.createElement("p");
       bookReadStatus.classList.add("book-read-status");
       if (book.read) {
-        bookReadStatus.textContent = "Read"
+         bookReadStatus.textContent = "Read";
       } else {
-        bookReadStatus.textContent = "Not Read"
+         bookReadStatus.textContent = "Not Read";
       }
 
       bookInfo.appendChild(bookTitle);
