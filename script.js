@@ -1,5 +1,10 @@
 let myLibrary = [];
+
 const booksContainer = document.querySelector("#books-container");
+const displayBookFormBtn = document.querySelector("#display-book-form")
+const formModal = document.querySelector("#form-modal")
+
+
 // Pre-made books
 
 myLibrary.push(new Book("The Odyssey", "Homer", 541, true));
@@ -13,6 +18,8 @@ myLibrary.push(
 );
 myLibrary.push(new Book("The 48 Laws of Power", "Robert Greene", 452, false));
 
+
+// Book constructor
 function Book(title, author, pages, read) {
    this.title = title;
    this.author = author;
@@ -20,7 +27,20 @@ function Book(title, author, pages, read) {
    this.read = read;
 }
 
+
 displayBooks();
+
+
+displayBookFormBtn.addEventListener("click", () => {
+   formModal.style.display = "block";
+})
+
+window.addEventListener("click", (e) => {
+   if (e.target == formModal) {
+      formModal.style.display = "none";
+   }
+})
+
 
 function addBookToLibrary() {
    const title = prompt("Whats the book title?");
