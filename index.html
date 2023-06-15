@@ -25,7 +25,28 @@
          </article>
          <article>
             <button type="button">NEW BOOK</button>
-            <form action=""></form>
+            <div class="form-modal">
+               <form class="add-book-form">
+                  <section>
+                     <p>
+                        <label for="title-input">Book title:</label>
+                        <input type="text" id="title-input" />
+                     </p>
+                     <p>
+                        <label for="author-input">Book author:</label>
+                        <input type="text" id="author-input" />
+                     </p>
+                     <p>
+                        <label for="page-input">Page count:</label> 
+                        <input type="tel" id="page-input"/>
+                     </p>
+                     <p>
+                        <label for="read-status">Have you read the Book?</label>
+                        <input type="checkbox" name="read-status" id="read-status">
+                     </p>
+                  </section>
+               </form>
+            </div>
          </article>
       </main>
       <script src="script.js"></script>
