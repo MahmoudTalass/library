@@ -24,8 +24,8 @@
             <article class="books-container" id="books-container"></article>
          </article>
          <article>
-            <button type="button">NEW BOOK</button>
-            <div class="form-modal">
+            <button type="button" id="display-book-form" class="display-book-form">NEW BOOK</button>
+            <div class="form-modal" id="form-modal">
                <form class="add-book-form">
                   <section>
                      <p>
@@ -44,6 +44,9 @@
                         <label for="read-status">Have you read the Book?</label>
                         <input type="checkbox" name="read-status" id="read-status">
                      </p>
+                  </section>
+                  <section>
+                     <button type="button">Add book</button>
                   </section>
                </form>
             </div>
