@@ -78,11 +78,31 @@ main {
    justify-content: space-between;
 }
 
+.change-read-status-btn, .remove-book-btn {
+    width: 5rem;
+    height: 1.8rem;
+    border-radius: var(--border-radius);
+    border: none;
+    color: var(--theme-color1);
+}
+
+.change-read-status-btn {
+    background-color: var(--theme-color2);
+}
+
+.change-read-status-btn:active {
+    opacity: .9;
+}
+
+.remove-book-btn {
+    background-color: #EF233C;
+}
+
 
 /* Add new book modal styling */
 
 .form-modal {
-   display: block;
+   display: none;
    position: fixed;
    background-color: rgba(0, 0, 0, 0.4);
    width: 100%;
@@ -147,5 +167,7 @@ main {
     padding: .8rem 1.5rem;
     border-radius: var(--border-radius);
 }
+
+
 
 
