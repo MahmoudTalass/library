@@ -49,7 +49,6 @@ main {
 
 .books-container {
     display: grid;
-    border: 1px solid black;
     grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
     gap: 1rem;
 }
@@ -73,3 +72,9 @@ main {
 .book-title {
     font-size: 1.5rem;
 }
+
+.book-card-controls {
+    display: flex;
+    justify-content: space-between;
+}
+
