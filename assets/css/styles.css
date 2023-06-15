@@ -4,6 +4,8 @@
    --theme-color1: #edf2f4;
    --theme-color2: #2b2d42;
    --theme-color3: #8d99ae;
+
+   --border-radius: 0.3rem;
 }
 
 body {
@@ -57,7 +59,7 @@ main {
    flex-direction: column;
    justify-content: space-between;
    padding: 1.5rem;
-   border-radius: 0.3rem;
+   border-radius: var(--border-radius);
    height: 300px;
 }
 
@@ -94,8 +96,56 @@ main {
 .add-book-form {
     color: var(--theme-color1);
     background-color: var(--theme-color2);
-    width: 30%;
-    min-height: 300px;
+    width: 300px;
     margin: auto;
     margin-top: 100px;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
+
+
+.book-info-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: var(--border-radius);
+}
+
+.book-info-inputs > p:not(:last-child) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.book-info-inputs > p:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-input-label {
+    font-size: 1.2rem;
+}
+
+.add-book-form-input {
+    height: 2rem;
+    outline: none;
+}
+
+.add-book-btn-section {
+    display: flex;
+    justify-content: center;
+}
+
+.add-book-btn {
+    background-color: transparent;
+    border: 1px solid var(--theme-color3);
+    color: var(--theme-color1);
+    padding: .8rem 1.5rem;
+    border-radius: var(--border-radius);
+}
+
+
