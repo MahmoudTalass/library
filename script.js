@@ -1,9 +1,19 @@
 let myLibrary = [];
 
+// Books container
 const booksContainer = document.querySelector("#books-container");
-const displayBookFormBtn = document.querySelector("#display-book-form")
-const formModal = document.querySelector("#form-modal")
+// Button to display the modal with the add book form
+const displayBookFormBtn = document.querySelector("#display-book-form");
+// Form Modal element
+const formModal = document.querySelector("#form-modal");
+// Form element inside the modal
+const addBookForm = document.querySelector("#add-book-form");
 
+// Form input elements
+const titleInput = document.querySelector("#title-input");
+const authorInput = document.querySelector("#author-input");
+const pageInput = document.querySelector("#page-input");
+const readStatusInput = document.querySelector("#read-status-input");
 
 // Pre-made books
 
@@ -18,7 +28,6 @@ myLibrary.push(
 );
 myLibrary.push(new Book("The 48 Laws of Power", "Robert Greene", 452, false));
 
-
 // Book constructor
 function Book(title, author, pages, read) {
    this.title = title;
@@ -27,88 +36,109 @@ function Book(title, author, pages, read) {
    this.read = read;
 }
 
-
+// Display the books currently available in the myLibrary when page loads
 displayBooks();
+
+
+// Add new book at submit of add new book form
+addBookForm.addEventListener("submit", (e) => {
+   e.preventDefault();
+
+   addBookToLibrary();
+
+   formModal.style.display = "none";
+});
+
 
 
 displayBookFormBtn.addEventListener("click", () => {
    formModal.style.display = "block";
-})
+});
 
 window.addEventListener("click", (e) => {
    if (e.target == formModal) {
       formModal.style.display = "none";
    }
-})
+});
 
-
+// This function captures the input values from the add new book form
+// and adds the new book to the library and displays it
 function addBookToLibrary() {
-   const title = prompt("Whats the book title?");
-   const author = prompt("Whats the name of the author?");
-   const pages = prompt("How many pages?");
-   const read = prompt("Have you read the book before? (yes/no)");
+   const newBookTitle = titleInput.value;
+   const newBookAuthor = authorInput.value;
+   const newBookPageCount = pageInput.value;
+   const readStatus = readStatusInput.checked;
+   
+   myLibrary.push(new Book(newBookTitle, newBookAuthor, newBookPageCount, readStatus));
 
-   myLibrary.push(new Book(title, author, pages, read));
-   displayBooks();
+   displayNewBook(myLibrary[myLibrary.length - 1])
 }
 
+
+// This function creates the book card based on the 'book' parameter info
+function displayNewBook(book) {
+   const bookCard = document.createElement("div");
+   bookCard.classList.add("book-card");
+
+   const bookInfo = document.createElement("div");
+   bookInfo.classList.add("book-info");
+
+   const bookTitle = document.createElement("p");
+   bookTitle.classList.add("book-title");
+   bookTitle.textContent = book.title;
+
+   const bookAuthor = document.createElement("p");
+   bookAuthor.classList.add("book-author");
+   bookAuthor.textContent = `By ${book.author}`;
+
+   const bookPageCount = document.createElement("p");
+   bookPageCount.classList.add("book-page-count");
+   bookPageCount.textContent = `Pages: ${book.pages}`;
+
+   const bookReadStatus = document.createElement("p");
+   bookReadStatus.classList.add("book-read-status");
+   if (book.read) {
+      bookReadStatus.textContent = "Read";
+   } else {
+      bookReadStatus.textContent = "Not Read";
+   }
+
+   bookInfo.appendChild(bookTitle);
+   bookInfo.appendChild(bookAuthor);
+   bookInfo.appendChild(bookPageCount);
+   bookInfo.appendChild(bookReadStatus);
+
+   bookCard.appendChild(bookInfo);
+
+   const bookCardControls = document.createElement("div");
+   bookCardControls.classList.add("book-card-controls");
+
+   const removeBookBtn = document.createElement("button");
+   removeBookBtn.setAttribute("type", "button");
+   removeBookBtn.classList.add("remove-book-btn");
+   removeBookBtn.textContent = "Remove";
+
+   const changeReadStatusBtn = document.createElement("button");
+   changeReadStatusBtn.setAttribute("type", "button");
+   changeReadStatusBtn.classList.add("change-read-status-btn");
+   if (book.read) {
+      changeReadStatusBtn.textContent = "Read";
+   } else {
+      changeReadStatusBtn.textContent = "Not Read";
+   }
+
+   bookCardControls.appendChild(removeBookBtn);
+   bookCardControls.appendChild(changeReadStatusBtn);
+
+   bookCard.appendChild(bookCardControls);
+
+   booksContainer.appendChild(bookCard);
+}
+
+
+// This function displays all the book cards when the page loads.
 function displayBooks() {
    myLibrary.forEach((book) => {
-      const bookCard = document.createElement("div");
-      bookCard.classList.add("book-card");
-
-      const bookInfo = document.createElement("div");
-      bookInfo.classList.add("book-info");
-
-      const bookTitle = document.createElement("p");
-      bookTitle.classList.add("book-title");
-      bookTitle.textContent = book.title;
-
-      const bookAuthor = document.createElement("p");
-      bookAuthor.classList.add("book-author");
-      bookAuthor.textContent = `By ${book.author}`;
-
-      const bookPageCount = document.createElement("p");
-      bookPageCount.classList.add("book-page-count");
-      bookPageCount.textContent = `Pages: ${book.pages}`;
-
-      const bookReadStatus = document.createElement("p");
-      bookReadStatus.classList.add("book-read-status");
-      if (book.read) {
-         bookReadStatus.textContent = "Read";
-      } else {
-         bookReadStatus.textContent = "Not Read";
-      }
-
-      bookInfo.appendChild(bookTitle);
-      bookInfo.appendChild(bookAuthor);
-      bookInfo.appendChild(bookPageCount);
-      bookInfo.appendChild(bookReadStatus);
-
-      bookCard.appendChild(bookInfo);
-
-      const bookCardControls = document.createElement("div");
-      bookCardControls.classList.add("book-card-controls");
-
-      const removeBookBtn = document.createElement("button");
-      removeBookBtn.setAttribute("type", "button");
-      removeBookBtn.classList.add("remove-book-btn");
-      removeBookBtn.textContent = "Remove";
-
-      const changeReadStatusBtn = document.createElement("button");
-      changeReadStatusBtn.setAttribute("type", "button");
-      changeReadStatusBtn.classList.add("change-read-status-btn");
-      if (book.read) {
-         changeReadStatusBtn.textContent = "Read";
-      } else {
-         changeReadStatusBtn.textContent = "Not Read";
-      }
-
-      bookCardControls.appendChild(removeBookBtn);
-      bookCardControls.appendChild(changeReadStatusBtn);
-
-      bookCard.appendChild(bookCardControls);
-
-      booksContainer.appendChild(bookCard);
+      displayNewBook(book)
    });
 }
