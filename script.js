@@ -98,9 +98,9 @@ function displayNewBook(book) {
    const bookReadStatus = document.createElement("p");
    bookReadStatus.classList.add("book-read-status");
    if (book.read) {
-      bookReadStatus.textContent = "Read";
+      bookReadStatus.textContent = "Completed";
    } else {
-      bookReadStatus.textContent = "Not Read";
+      bookReadStatus.textContent = "In Progress";
    }
 
    bookInfo.appendChild(bookTitle);
@@ -126,6 +126,16 @@ function displayNewBook(book) {
    } else {
       changeReadStatusBtn.textContent = "Not Read";
    }
+
+   changeReadStatusBtn.addEventListener("click", () => {
+      if (changeReadStatusBtn.textContent === "Read") {
+         changeReadStatusBtn.textContent = "Not Read"
+         bookReadStatus.textContent = "In Progress"
+      } else {
+         changeReadStatusBtn.textContent = "Read";
+         bookReadStatus.textContent = "Completed";
+      }
+   })
 
    bookCardControls.appendChild(removeBookBtn);
    bookCardControls.appendChild(changeReadStatusBtn);
