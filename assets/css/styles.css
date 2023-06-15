@@ -1,31 +1,39 @@
 * {
    box-sizing: border-box;
+
+   --theme-color1: #edf2f4;
+   --theme-color2: #2b2d42;
+   --theme-color3: #8d99ae;
 }
 
 body {
    font-family: "Roboto", sans-serif;
-   background-color: #8D99AE;
+   background-color: var(--theme-color3);
 }
+
 
 /* Header Styling */
 
 header {
    height: 10rem;
-   background-color: #2B2D42;
+   background-color: var(--theme-color2);
    display: flex;
    justify-content: center;
    align-items: center;
    font-size: 3rem;
    font-weight: 700;
+   color: var(--theme-color1);
+   letter-spacing: 0.3rem;
 }
 
 
 /* Main styling */
 
 main {
-    background-color: #EDF2F4;
-    width: 70%;
-    margin: 3rem auto;
+   background-color: var(--theme-color1);
+   width: 70%;
+   margin: 3rem auto;
+   min-height: 50vh;
 }
 
-
+/* Book card styling */
