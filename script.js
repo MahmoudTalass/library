@@ -1,5 +1,5 @@
 let myLibrary = [];
-
+const booksContainer = document.querySelector("#books-container");
 // Pre-made books
 
 myLibrary.push(new Book("The Odyssey", "Homer", 541, true));
@@ -12,12 +12,7 @@ myLibrary.push(
    )
 );
 myLibrary.push(
-   new Book(
-      "A Dance with Dragons (A Song of Ice and Fire)",
-      "George R. R. Martin",
-      1152,
-      false
-   )
+   new Book("The 48 Laws of Power", "Robert Greene", 452, false)
 );
 
 function Book(title, author, pages, read) {
@@ -27,6 +22,8 @@ function Book(title, author, pages, read) {
    this.read = read;
 }
 
+displayBooks();
+
 function addBookToLibrary() {
    const title = prompt("Whats the book title?");
    const author = prompt("Whats the name of the author?");
@@ -34,4 +31,61 @@ function addBookToLibrary() {
    const read = prompt("Have you read the book before? (yes/no)");
 
    myLibrary.push(new Book(title, author, pages, read));
+}
+
+function displayBooks() {
+   myLibrary.forEach((book) => {
+      const bookCard = document.createElement("div");
+      bookCard.classList.add("book-card");
+
+      const bookInfo = document.createElement("div");
+      bookInfo.classList.add("book-info");
+
+      const bookTitle = document.createElement("p");
+      bookTitle.classList.add("book-title");
+      bookTitle.textContent = book.title;
+
+      const bookAuthor = document.createElement("p");
+      bookAuthor.classList.add("book-author");
+      bookAuthor.textContent = book.author;
+
+      const bookPageCount = document.createElement("p");
+      bookPageCount.classList.add("book-page-count");
+      bookPageCount.textContent = book.pages;
+
+      const bookReadStatus = document.createElement("p");
+      bookReadStatus.classList.add("book-read-status");
+      bookReadStatus.textContent = book.read;
+
+      bookInfo.appendChild(bookTitle);
+      bookInfo.appendChild(bookAuthor);
+      bookInfo.appendChild(bookPageCount);
+      bookInfo.appendChild(bookReadStatus);
+
+      bookCard.appendChild(bookInfo);
+
+      const bookCardControls = document.createElement("div");
+      bookCardControls.classList.add("book-card-controls");
+
+      const removeBookBtn = document.createElement("button");
+      removeBookBtn.setAttribute("type", "button");
+      removeBookBtn.classList.add("remove-book-btn");
+      removeBookBtn.textContent = "Remove";
+
+      const changeReadStatusBtn = document.createElement("button");
+      changeReadStatusBtn.setAttribute("type", "button");
+      changeReadStatusBtn.classList.add("change-read-status-btn");
+      if (book.read) {
+         changeReadStatusBtn.textContent = "Read";
+      } else {
+         changeReadStatusBtn.textContent = "Not Read";
+      }
+
+      bookCardControls.appendChild(removeBookBtn);
+      bookCardControls.appendChild(changeReadStatusBtn);
+
+      bookCard.appendChild(bookCardControls);
+
+      booksContainer.appendChild(bookCard);
+   });
 }
