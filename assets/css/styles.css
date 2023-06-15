@@ -11,7 +11,6 @@ body {
    background-color: var(--theme-color3);
 }
 
-
 /* Header Styling */
 
 header {
@@ -26,55 +25,77 @@ header {
    letter-spacing: 0.3rem;
 }
 
-
 /* Main styling */
 
 main {
-    width: 70%;
-    margin: 2rem auto;
+   width: 70%;
+   margin: 2rem auto;
 }
 
 /* Book display styling */
 
 .books-display {
-    display: flex;
-    flex-direction: column;
-    gap: 1.6rem;
-    margin-bottom: 2rem;
+   display: flex;
+   flex-direction: column;
+   gap: 1.6rem;
+   margin-bottom: 2rem;
 }
 
 .books-display-heading {
-    font-size: 2rem;
+   font-size: 2rem;
 }
 
 .books-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
-    gap: 1rem;
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
+   gap: 1rem;
 }
 
 .book-card {
-    background-color: var(--theme-color1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1.5rem;
-    border-radius: .3rem;
-    height: 300px;
+   background-color: var(--theme-color1);
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   padding: 1.5rem;
+   border-radius: 0.3rem;
+   height: 300px;
 }
 
 .book-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
 }
 
 .book-title {
-    font-size: 1.5rem;
+   font-size: 1.5rem;
 }
 
 .book-card-controls {
-    display: flex;
-    justify-content: space-between;
+   display: flex;
+   justify-content: space-between;
 }
 
+
+/* Add new book modal styling */
+
+.form-modal {
+   display: block;
+   position: fixed;
+   background-color: rgba(0, 0, 0, 0.4);
+   width: 100%;
+   height: 100%;
+   left: 0;
+   top: 0;
+   overflow: auto;
+   z-index: 1;
+}
+
+.add-book-form {
+    color: var(--theme-color1);
+    background-color: var(--theme-color2);
+    width: 30%;
+    min-height: 300px;
+    margin: auto;
+    margin-top: 100px;
+}
