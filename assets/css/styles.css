@@ -30,10 +30,8 @@ header {
 /* Main styling */
 
 main {
-   background-color: var(--theme-color1);
-   width: 70%;
-   margin: 3rem auto;
-   min-height: 50vh;
+    width: 80%;
+    margin: 2rem auto;
 }
 
-/* Book card styling */
+/* Book display styling */
