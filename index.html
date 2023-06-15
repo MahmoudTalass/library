@@ -24,25 +24,47 @@
             <article class="books-container" id="books-container"></article>
          </article>
          <article>
-            <button type="button" id="display-book-form" class="display-book-form">NEW BOOK</button>
+            <button
+               type="button"
+               id="display-book-form"
+               class="display-book-form"
+            >
+               NEW BOOK
+            </button>
             <div class="form-modal" id="form-modal">
                <form class="add-book-form">
-                  <section>
+                  <section class="book-info-inputs">
                      <p>
-                        <label for="title-input">Book title:</label>
-                        <input type="text" id="title-input" />
+                        <label for="title-input" class="form-input-label">Book title:</label>
+                        <input
+                           type="text"
+                           id="title-input"
+                           class="add-book-form-input"
+                        />
                      </p>
                      <p>
-                        <label for="author-input">Book author:</label>
-                        <input type="text" id="author-input" />
+                        <label for="author-input" class="form-input-label">Book author:</label>
+                        <input
+                           type="text"
+                           id="author-input"
+                           class="add-book-form-input"
+                        />
                      </p>
                      <p>
-                        <label for="page-input">Page count:</label> 
-                        <input type="tel" id="page-input"/>
+                        <label for="page-input" class="form-input-label">Page count:</label>
+                        <input
+                           type="tel"
+                           id="page-input"
+                           class="add-book-form-input"
+                        />
                      </p>
                      <p>
-                        <label for="read-status">Have you read the Book?</label>
-                        <input type="checkbox" name="read-status" id="read-status">
+                        <label for="read-status" class="form-input-label">Have you read the Book?</label>
+                        <input
+                           type="checkbox"
+                           name="read-status"
+                           id="read-status"
+                        />
                      </p>
                   </section>
                   <section>
