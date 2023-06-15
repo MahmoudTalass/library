@@ -50,8 +50,7 @@ main {
 .books-container {
     display: grid;
     border: 1px solid black;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
-    grid-template-rows: repeat(auto-fit, minmax(200px, 280px));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
     gap: 1rem;
 }
 
@@ -62,6 +61,7 @@ main {
     justify-content: space-between;
     padding: 1.5rem;
     border-radius: .3rem;
+    height: 300px;
 }
 
 .book-info {
@@ -71,5 +71,5 @@ main {
 }
 
 .book-title {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
 }
