@@ -35,31 +35,43 @@
                <form class="add-book-form">
                   <section class="book-info-inputs">
                      <p>
-                        <label for="title-input" class="form-input-label">Book title:</label>
+                        <label for="title-input" class="form-input-label"
+                           >Book title:</label
+                        >
                         <input
                            type="text"
                            id="title-input"
                            class="add-book-form-input"
+                           required
                         />
                      </p>
                      <p>
-                        <label for="author-input" class="form-input-label">Book author:</label>
+                        <label for="author-input" class="form-input-label"
+                           >Book author:</label
+                        >
                         <input
                            type="text"
                            id="author-input"
                            class="add-book-form-input"
+                           required
                         />
                      </p>
                      <p>
-                        <label for="page-input" class="form-input-label">Page count:</label>
+                        <label for="page-input" class="form-input-label"
+                           >Page count:</label
+                        >
                         <input
                            type="tel"
                            id="page-input"
                            class="add-book-form-input"
+                           pattern="^(?:[1-9]\d{0,4}|100000)$"
+                           required
                         />
                      </p>
                      <p>
-                        <label for="read-status" class="form-input-label">Have you read the Book?</label>
+                        <label for="read-status" class="form-input-label"
+                           >Have you read the Book?</label
+                        >
                         <input
                            type="checkbox"
                            name="read-status"
@@ -67,8 +79,10 @@
                         />
                      </p>
                   </section>
-                  <section>
-                     <button type="button" class="add-book-btn" id="add-book-btn">Add book</button>
+                  <section class="add-book-btn-section">
+                     <button class="add-book-btn" id="add-book-btn">
+                        Add book
+                     </button>
                   </section>
                </form>
             </div>
