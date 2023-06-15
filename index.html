@@ -20,17 +20,19 @@
       </header>
       <main>
          <article class="books-display">
-            <h2 class="books-display-heading">My books</h2>
+            <div class="books-display-head">
+               <h2 class="books-display-heading">My books</h2>
+               <button
+                  type="button"
+                  id="display-book-form"
+                  class="display-book-form"
+               >
+                  NEW BOOK
+               </button>
+            </div>
             <article class="books-container" id="books-container"></article>
          </article>
          <article>
-            <button
-               type="button"
-               id="display-book-form"
-               class="display-book-form"
-            >
-               NEW BOOK
-            </button>
             <div class="form-modal" id="form-modal">
                <form class="add-book-form" id="add-book-form">
                   <section class="book-info-inputs">
@@ -80,7 +82,11 @@
                      </p>
                   </section>
                   <section class="add-book-btn-section">
-                     <button class="add-book-btn" id="add-book-btn" type="submit">
+                     <button
+                        class="add-book-btn"
+                        id="add-book-btn"
+                        type="submit"
+                     >
                         Add book
                      </button>
                   </section>
