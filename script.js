@@ -17,6 +17,7 @@ const readStatusInput = document.querySelector("#read-status-input");
 
 const totalBooksNumDisplay = document.querySelector("#total-books-num");
 let totalBooksNum = 0;
+
 let currentId = 0;
 
 const searchBookInput = document.querySelector("#search-book");
