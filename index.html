@@ -20,79 +20,75 @@
       </header>
       <main>
          <article class="books-display">
-            <div class="books-display-head">
-               <h2 class="books-display-heading">My books</h2>
-               <button
+            <h2 class="books-display-heading">My books</h2>
+
+            <article class="books-container" id="books-container"></article>
+         </article>
+         <article class="other-library-tools">
+            <p class="total-books">Total Books: <span id="total-books-num"></span></p>
+            <button
                   type="button"
                   id="display-book-form"
                   class="display-book-form"
                >
                   NEW BOOK
                </button>
-            </div>
-            <article class="books-container" id="books-container"></article>
          </article>
-         <article>
-            <div class="form-modal" id="form-modal">
-               <form class="add-book-form" id="add-book-form">
-                  <section class="book-info-inputs">
-                     <p>
-                        <label for="title-input" class="form-input-label"
-                           >Book title:</label
-                        >
-                        <input
-                           type="text"
-                           id="title-input"
-                           class="add-book-form-input"
-                           required
-                        />
-                     </p>
-                     <p>
-                        <label for="author-input" class="form-input-label"
-                           >Book author:</label
-                        >
-                        <input
-                           type="text"
-                           id="author-input"
-                           class="add-book-form-input"
-                           required
-                        />
-                     </p>
-                     <p>
-                        <label for="page-input" class="form-input-label"
-                           >Page count:</label
-                        >
-                        <input
-                           type="tel"
-                           id="page-input"
-                           class="add-book-form-input"
-                           pattern="^(?:[1-9]\d{0,4}|100000)$"
-                           required
-                        />
-                     </p>
-                     <p>
-                        <label for="read-status" class="form-input-label"
-                           >Have you read the Book?</label
-                        >
-                        <input
-                           type="checkbox"
-                           name="read-status"
-                           id="read-status-input"
-                        />
-                     </p>
-                  </section>
-                  <section class="add-book-btn-section">
-                     <button
-                        class="add-book-btn"
-                        id="add-book-btn"
-                        type="submit"
+         <div class="form-modal" id="form-modal">
+            <form class="add-book-form" id="add-book-form">
+               <section class="book-info-inputs">
+                  <p>
+                     <label for="title-input" class="form-input-label"
+                        >Book title:</label
                      >
-                        Add book
-                     </button>
-                  </section>
-               </form>
-            </div>
-         </article>
+                     <input
+                        type="text"
+                        id="title-input"
+                        class="add-book-form-input"
+                        required
+                     />
+                  </p>
+                  <p>
+                     <label for="author-input" class="form-input-label"
+                        >Book author:</label
+                     >
+                     <input
+                        type="text"
+                        id="author-input"
+                        class="add-book-form-input"
+                        required
+                     />
+                  </p>
+                  <p>
+                     <label for="page-input" class="form-input-label"
+                        >Page count:</label
+                     >
+                     <input
+                        type="tel"
+                        id="page-input"
+                        class="add-book-form-input"
+                        pattern="^(?:[1-9]\d{0,4}|100000)$"
+                        required
+                     />
+                  </p>
+                  <p>
+                     <label for="read-status" class="form-input-label"
+                        >Have you read the Book?</label
+                     >
+                     <input
+                        type="checkbox"
+                        name="read-status"
+                        id="read-status-input"
+                     />
+                  </p>
+               </section>
+               <section class="add-book-btn-section">
+                  <button class="add-book-btn" id="add-book-btn" type="submit">
+                     Add book
+                  </button>
+               </section>
+            </form>
+         </div>
       </main>
       <script src="script.js"></script>
    </body>
