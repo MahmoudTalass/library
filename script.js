@@ -15,6 +15,9 @@ const authorInput = document.querySelector("#author-input");
 const pageInput = document.querySelector("#page-input");
 const readStatusInput = document.querySelector("#read-status-input");
 
+const totalBooksNumDisplay = document.querySelector("#total-books-num")
+let totalBooksNum = 0;
+
 // Pre-made books
 
 myLibrary.push(new Book("The Odyssey", "Homer", 541, true));
@@ -34,6 +37,8 @@ function Book(title, author, pages, read) {
    this.author = author;
    this.pages = pages;
    this.read = read;
+
+   totalBooksNum++;
 }
 
 // Display the books currently available in the myLibrary when page loads
@@ -143,6 +148,7 @@ function displayNewBook(book) {
    bookCard.appendChild(bookCardControls);
 
    booksContainer.appendChild(bookCard);
+   totalBooksNumDisplay.textContent = totalBooksNum;
 }
 
 
