@@ -15,7 +15,7 @@ const authorInput = document.querySelector("#author-input");
 const pageInput = document.querySelector("#page-input");
 const readStatusInput = document.querySelector("#read-status-input");
 
-const totalBooksNumDisplay = document.querySelector("#total-books-num")
+const totalBooksNumDisplay = document.querySelector("#total-books-num");
 let totalBooksNum = 0;
 
 // Pre-made books
@@ -44,7 +44,6 @@ function Book(title, author, pages, read) {
 // Display the books currently available in the myLibrary when page loads
 displayBooks();
 
-
 // Add new book at submit of add new book form
 addBookForm.addEventListener("submit", (e) => {
    e.preventDefault();
@@ -53,8 +52,6 @@ addBookForm.addEventListener("submit", (e) => {
 
    formModal.style.display = "none";
 });
-
-
 
 displayBookFormBtn.addEventListener("click", () => {
    formModal.style.display = "block";
@@ -73,12 +70,18 @@ function addBookToLibrary() {
    const newBookAuthor = authorInput.value;
    const newBookPageCount = pageInput.value;
    const readStatus = readStatusInput.checked;
-   
-   myLibrary.push(new Book(newBookTitle, newBookAuthor, newBookPageCount, readStatus));
 
-   displayNewBook(myLibrary[myLibrary.length - 1])
+   myLibrary.push(
+      new Book(newBookTitle, newBookAuthor, newBookPageCount, readStatus)
+   );
+
+   displayNewBook(myLibrary[myLibrary.length - 1]);
+
+   titleInput.value = "";
+   authorInput.value = "";
+   pageInput.value = "";
+   readStatusInput.value = "";
 }
-
 
 // This function creates the book card based on the 'book' parameter info
 function displayNewBook(book) {
@@ -134,13 +137,13 @@ function displayNewBook(book) {
 
    changeReadStatusBtn.addEventListener("click", () => {
       if (changeReadStatusBtn.textContent === "Read") {
-         changeReadStatusBtn.textContent = "Not Read"
-         bookReadStatus.textContent = "In Progress"
+         changeReadStatusBtn.textContent = "Not Read";
+         bookReadStatus.textContent = "In Progress";
       } else {
          changeReadStatusBtn.textContent = "Read";
          bookReadStatus.textContent = "Completed";
       }
-   })
+   });
 
    bookCardControls.appendChild(removeBookBtn);
    bookCardControls.appendChild(changeReadStatusBtn);
@@ -151,10 +154,9 @@ function displayNewBook(book) {
    totalBooksNumDisplay.textContent = totalBooksNum;
 }
 
-
 // This function displays all the book cards when the page loads.
 function displayBooks() {
    myLibrary.forEach((book) => {
-      displayNewBook(book)
+      displayNewBook(book);
    });
 }
