@@ -136,12 +136,13 @@ function displayNewBook(book) {
    }
 
    changeReadStatusBtn.addEventListener("click", () => {
-      if (changeReadStatusBtn.textContent === "Read") {
-         changeReadStatusBtn.textContent = "Not Read";
-         bookReadStatus.textContent = "In Progress";
-      } else {
+      book.changeReadStatus();
+      if (book.read) {
          changeReadStatusBtn.textContent = "Read";
          bookReadStatus.textContent = "Completed";
+      } else {
+         changeReadStatusBtn.textContent = "Not Read";
+         bookReadStatus.textContent = "In Progress";
       }
    });
 
@@ -153,6 +154,15 @@ function displayNewBook(book) {
    booksContainer.appendChild(bookCard);
    totalBooksNumDisplay.textContent = totalBooksNum;
 }
+
+Book.prototype.changeReadStatus = function () {
+   console.log(this.read);
+   if (this.read) {
+      this.read = false;
+   } else {
+      this.read = true;
+   }
+};
 
 // This function displays all the book cards when the page loads.
 function displayBooks() {
