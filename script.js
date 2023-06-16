@@ -19,6 +19,8 @@ const totalBooksNumDisplay = document.querySelector("#total-books-num");
 let totalBooksNum = 0;
 let currentId = 0;
 
+const searchBookInput = document.querySelector("#search-book");
+
 // Pre-made books
 
 myLibrary.push(new Book("The Odyssey", "Homer", 541, true));
@@ -43,6 +45,9 @@ function Book(title, author, pages, read) {
    totalBooksNum++;
 }
 
+// Search book event listner
+searchBookInput.addEventListener("keyup", handleSearch);
+
 // Display the books currently available in the myLibrary when page loads
 displayBooks();
 
@@ -55,6 +60,7 @@ addBookForm.addEventListener("submit", (e) => {
    formModal.style.display = "none";
 });
 
+// These two event listeners are used for modal display purposes
 displayBookFormBtn.addEventListener("click", () => {
    formModal.style.display = "block";
 });
@@ -181,7 +187,7 @@ function removeBookCard(e) {
    // Convert the retrieved data-book-id into an integer
    const bookId = parseInt(bookCard.dataset.bookId);
 
-   // Find the index of the book that shares the same id as the clicked 
+   // Find the index of the book that shares the same id as the clicked
    // on card with the data-book-id
    const bookIndex = myLibrary.findIndex(
       (currentBook) => currentBook.id === bookId
@@ -200,4 +206,36 @@ function displayBooks() {
    myLibrary.forEach((book) => {
       displayNewBook(book);
    });
+}
+
+// These functions is responsible for book search functionality
+
+// This function looks through the myLibrary array and makes sure 
+// that the book being searched exists in the array
+function handleSearch() {
+   let searchValue = searchBookInput.value.toLowerCase();
+   let filteredBooks = myLibrary.filter((book) => {
+      return (book.title.toLowerCase().includes(searchValue) || 
+      book.author.toLowerCase().includes(searchValue));
+   })
+
+
+   displaySearch(filteredBooks)
+}
+
+
+// This function displays all the books found through the search
+// using the displayNewBook function with the argument being the
+// filtered array
+function displaySearch(filteredBooks) {
+   booksContainer.textContent = " ";
+
+   if (filteredBooks.length === 0) {
+      const noResultMessage = document.createElement("p")
+      noResultMessage.textContent = "No matching books found."
+
+      booksContainer.appendChild(noResultMessage)
+   } else {
+      filteredBooks.forEach(book => displayNewBook(book))
+   }
 }
