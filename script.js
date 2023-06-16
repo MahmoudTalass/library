@@ -17,6 +17,7 @@ const readStatusInput = document.querySelector("#read-status-input");
 
 const totalBooksNumDisplay = document.querySelector("#total-books-num");
 let totalBooksNum = 0;
+let currentId = 0;
 
 // Pre-made books
 
@@ -37,6 +38,7 @@ function Book(title, author, pages, read) {
    this.author = author;
    this.pages = pages;
    this.read = read;
+   this.id = currentId++;
 
    totalBooksNum++;
 }
@@ -87,6 +89,7 @@ function addBookToLibrary() {
 function displayNewBook(book) {
    const bookCard = document.createElement("div");
    bookCard.classList.add("book-card");
+   bookCard.dataset.bookId = book.id;
 
    const bookInfo = document.createElement("div");
    bookInfo.classList.add("book-info");
@@ -124,6 +127,7 @@ function displayNewBook(book) {
    const removeBookBtn = document.createElement("button");
    removeBookBtn.setAttribute("type", "button");
    removeBookBtn.classList.add("remove-book-btn");
+   removeBookBtn.id = "remove-book-btn";
    removeBookBtn.textContent = "Remove";
 
    const changeReadStatusBtn = document.createElement("button");
@@ -153,16 +157,43 @@ function displayNewBook(book) {
 
    booksContainer.appendChild(bookCard);
    totalBooksNumDisplay.textContent = totalBooksNum;
+
+   // Remove book card event listener
+   removeBookBtn.addEventListener("click", (e) => {
+      removeBookCard(e);
+      totalBooksNumDisplay.textContent = totalBooksNum;
+   });
 }
 
+// prototype function to make change to read status of book objects
 Book.prototype.changeReadStatus = function () {
-   console.log(this.read);
    if (this.read) {
       this.read = false;
    } else {
       this.read = true;
    }
 };
+
+// This function removes a book card
+function removeBookCard(e) {
+   const bookCard = e.target.closest(".book-card");
+
+   // Convert the retrieved data-book-id into an integer
+   const bookId = parseInt(bookCard.dataset.bookId);
+
+   // Find the index of the book that shares the same id as the clicked 
+   // on card with the data-book-id
+   const bookIndex = myLibrary.findIndex(
+      (currentBook) => currentBook.id === bookId
+   );
+
+   if (bookIndex != -1) {
+      myLibrary.splice(bookIndex, 1);
+   }
+
+   booksContainer.removeChild(bookCard);
+   totalBooksNum--;
+}
 
 // This function displays all the book cards when the page loads.
 function displayBooks() {
