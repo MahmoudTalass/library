@@ -30,8 +30,11 @@ header {
 /* Main styling */
 
 main {
-   width: 70%;
+   width: 80%;
    margin: 2rem auto;
+   display: grid;
+   grid-template-columns: 1fr auto;
+   gap: 1.5rem;
 }
 
 /* Book display styling */
@@ -43,7 +46,10 @@ main {
    margin-bottom: 2rem;
 }
 
+
+
 .books-display-heading {
+    color: var(--theme-color1);
    font-size: 2rem;
 }
 
@@ -169,5 +175,27 @@ main {
 }
 
 
+
+/* Library info and add new book button styling */
+
+.other-library-tools {
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.total-books {
+    font-size: 1.5rem;
+}
+
+
+.display-book-form {
+    border-radius: var(--border-radius);
+    border: none;
+    background-color: var(--theme-color1);
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+}
 
 
