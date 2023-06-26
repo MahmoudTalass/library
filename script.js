@@ -35,16 +35,37 @@ myLibrary.push(
 );
 myLibrary.push(new Book("The 48 Laws of Power", "Robert Greene", 452, false));
 
-// Book constructor
-function Book(title, author, pages, read) {
-   this.title = title;
-   this.author = author;
-   this.pages = pages;
-   this.read = read;
-   this.id = currentId++;
+// Book class
+class Book {
+   title;
+   author;
+   pages;
+   read;
+   id;
 
-   totalBooksNum++;
+   static currentId = 0;
+   static totalBooksNum = 0;
+
+   constructor (title, author, pages, read){
+      this.title = title;
+      this.author = author;
+      this.pages = pages;
+      this.read = read;
+      this.id = currentId++;
+
+      totalBooksNum++;
+   }
 }
+
+// function Book(title, author, pages, read) {
+//    this.title = title;
+//    this.author = author;
+//    this.pages = pages;
+//    this.read = read;
+//    this.id = currentId++;
+
+//    totalBooksNum++;
+// }
 
 // Search book event listner
 searchBookInput.addEventListener("keyup", handleSearch);
