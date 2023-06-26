@@ -1,5 +1,3 @@
-let myLibrary = [];
-
 // Books container
 const booksContainer = document.querySelector("#books-container");
 // Button to display the modal with the add book form
@@ -16,11 +14,32 @@ const pageInput = document.querySelector("#page-input");
 const readStatusInput = document.querySelector("#read-status-input");
 
 const totalBooksNumDisplay = document.querySelector("#total-books-num");
-let totalBooksNum = 0;
-
-let currentId = 0;
 
 const searchBookInput = document.querySelector("#search-book");
+
+class Book {
+   static currentId = 0;
+   static totalBooksNum = 0;
+
+   constructor(title, author, pages, read) {
+      this.title = title;
+      this.author = author;
+      this.pages = pages;
+      this.read = read;
+      this.id = Book.currentId++;
+      Book.totalBooksNum++;
+   }
+
+   changeReadStatus() {
+      if (this.read) {
+         this.read = false;
+      } else {
+         this.read = true;
+      }
+   }
+}
+
+let myLibrary = [];
 
 // Pre-made books
 
@@ -35,38 +54,6 @@ myLibrary.push(
 );
 myLibrary.push(new Book("The 48 Laws of Power", "Robert Greene", 452, false));
 
-// Book class
-class Book {
-   title;
-   author;
-   pages;
-   read;
-   id;
-
-   static currentId = 0;
-   static totalBooksNum = 0;
-
-   constructor (title, author, pages, read){
-      this.title = title;
-      this.author = author;
-      this.pages = pages;
-      this.read = read;
-      this.id = currentId++;
-
-      totalBooksNum++;
-   }
-}
-
-// function Book(title, author, pages, read) {
-//    this.title = title;
-//    this.author = author;
-//    this.pages = pages;
-//    this.read = read;
-//    this.id = currentId++;
-
-//    totalBooksNum++;
-// }
-
 // Search book event listner
 searchBookInput.addEventListener("keyup", handleSearch);
 
@@ -78,6 +65,7 @@ addBookForm.addEventListener("submit", (e) => {
    e.preventDefault();
 
    addBookToLibrary();
+   console.log(Book.currentId);
 
    formModal.style.display = "none";
 });
@@ -184,23 +172,14 @@ function displayNewBook(book) {
    bookCard.appendChild(bookCardControls);
 
    booksContainer.appendChild(bookCard);
-   totalBooksNumDisplay.textContent = totalBooksNum;
+   totalBooksNumDisplay.textContent = Book.totalBooksNum;
 
    // Remove book card event listener
    removeBookBtn.addEventListener("click", (e) => {
       removeBookCard(e);
-      totalBooksNumDisplay.textContent = totalBooksNum;
+      totalBooksNumDisplay.textContent = Book.totalBooksNum;
    });
 }
-
-// prototype function to make change to read status of book objects
-Book.prototype.changeReadStatus = function () {
-   if (this.read) {
-      this.read = false;
-   } else {
-      this.read = true;
-   }
-};
 
 // This function removes a book card
 function removeBookCard(e) {
@@ -220,7 +199,7 @@ function removeBookCard(e) {
    }
 
    booksContainer.removeChild(bookCard);
-   totalBooksNum--;
+   Book.totalBooksNum--;
 }
 
 // This function displays all the book cards when the page loads.
@@ -232,19 +211,19 @@ function displayBooks() {
 
 // These functions is responsible for book search functionality
 
-// This function looks through the myLibrary array and makes sure 
+// This function looks through the myLibrary array and makes sure
 // that the book being searched exists in the array
 function handleSearch() {
    let searchValue = searchBookInput.value.toLowerCase();
    let filteredBooks = myLibrary.filter((book) => {
-      return (book.title.toLowerCase().includes(searchValue) || 
-      book.author.toLowerCase().includes(searchValue));
-   })
+      return (
+         book.title.toLowerCase().includes(searchValue) ||
+         book.author.toLowerCase().includes(searchValue)
+      );
+   });
 
-
-   displaySearch(filteredBooks)
+   displaySearch(filteredBooks);
 }
-
 
 // This function displays all the books found through the search
 // using the displayNewBook function with the argument being the
@@ -253,11 +232,11 @@ function displaySearch(filteredBooks) {
    booksContainer.textContent = " ";
 
    if (filteredBooks.length === 0) {
-      const noResultMessage = document.createElement("p")
-      noResultMessage.textContent = "No matching books found."
+      const noResultMessage = document.createElement("p");
+      noResultMessage.textContent = "No matching books found.";
 
-      booksContainer.appendChild(noResultMessage)
+      booksContainer.appendChild(noResultMessage);
    } else {
-      filteredBooks.forEach(book => displayNewBook(book))
+      filteredBooks.forEach((book) => displayNewBook(book));
    }
 }
